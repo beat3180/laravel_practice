@@ -42,3 +42,9 @@ Route::prefix('admin')->name('admin::')->group(function() {
 Route::middleware('auth:admin')->group(function () {
     Route::get('admin', 'AdminController@index');
 });
+
+
+Route::get('/inde', 'HelloController@inde');
+Route::post('/inde', 'HelloController@result');
+
+Route::get('/index', 'HelloController@index');
