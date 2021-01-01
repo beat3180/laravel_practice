@@ -47,4 +47,8 @@ Route::middleware('auth:admin')->group(function () {
 Route::get('/inde', 'HelloController@inde');
 Route::post('/inde', 'HelloController@result');
 
-Route::get('/index', 'HelloController@index');
+
+
+use App\Http\Middleware\HelloMiddleware;
+
+Route::get('/index', 'HelloController@index')->Middleware('helo');

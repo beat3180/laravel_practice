@@ -31,9 +31,9 @@ class HelloController extends Controller
         ]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         // views/messages/index.blade.phpを指定
-        return view('index',['message'=>'Hello!']);
+    return view('index'/*,['data'=>$request->data]*/);
     }
 }
