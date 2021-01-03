@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+//Myruleを継承する
+use App\Rules\Myrule;
+
 class HelloRequest extends FormRequest
 {
     /**
@@ -13,6 +16,7 @@ class HelloRequest extends FormRequest
      */
     public function authorize()
     {
+        //パスでフォームリクエストの利用を判断する。パスが一致すればフォームリクエストを使える
         if($this->path() == 'practice')
         {
             return true;
@@ -26,15 +30,19 @@ class HelloRequest extends FormRequest
      *
      * @return array
      */
+    //検証するバリデーションを設定する
     public function rules()
     {
         return [
             'name' => 'required',
             'mail' => 'email',
-            'age' => 'numeric|hello',
+            //'age' => 'numeric|hello',  作成したhelloルールを使用する
+            //newを使ってMyruleクラスを使用する
+            'age' => ['numeric', new Myrule(5)],
         ];
     }
 
+    //表示するメッセージを設定する
     public function messages()
     {
         return [

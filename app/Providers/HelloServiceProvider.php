@@ -17,14 +17,22 @@ class HelloServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //ビューコンポーザー
          /*View::composer(
             'index',function($view){
                 $view->with('view_message','compose message!');
             }
         );*/
-        $validator = $this->app['validator'];
+        //バリデータクラスの生成。ValidatorHelloを通して設定。汎用性があり、複数のコントローラーで使える
+        /*$validator = $this->app['validator'];
         $validator->resolver(function($translator, $data, $rulus, $messages){
             return new HelloValidator($translator, $data, $rulus, $messages);
+        });*/
+        //エクステンドを使ったバリデータ。ValidatorHelloは通さずに独立している、汎用性がなく一つのコントローラーでしか使えない
+        Validator::extend('hello', function($attorivute,$value,$parameters,$validator)
+        {
+            return $value % 2 == 0;
+
         });
 
     }

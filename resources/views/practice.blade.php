@@ -44,7 +44,7 @@
 
   <form action="{{ url('/practice')}}" method="post">
     <table>
-    {{ csrf_field() }}
+    ＠csrf
       @error('name')
         <tr><th>ERROR</th><td>{{$message}}</td></tr>
       @enderror

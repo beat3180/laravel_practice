@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//フォームリクエストクラスを継承する
 use App\Http\Requests\HelloRequest;
+//バリデータクラスを継承する
 use Validator;
+//DBクラスを継承する
+use Illuminate\Support\Facades\DB;
 
 class HelloController extends Controller
 {
@@ -54,8 +58,10 @@ class HelloController extends Controller
 
     }
 
+    //フォームリクエストを使用
     public function post(HelloRequest $request)
     {
+        //バリデーションをリクエストから取り出して使用
         /*$validate_rule = [
             'name' => 'required',
             'mail' => 'email',
@@ -65,6 +71,7 @@ class HelloController extends Controller
         return view('practice', ['msg' => '正しく入力されました!']);
     }
 
+    //バリデータをこの場で生成して使用。sametimesを使ってバリデータを分岐させる
     /*public function post(Request $request)
     {
         $rules = [
@@ -91,11 +98,19 @@ class HelloController extends Controller
         });
         if ($validator->fails()) {
             return redirect('/practice')
+                    //エラーメッセージを付与してリダイレクトする
                     ->withErrors($validator)
+                    //送られてきたフォームの値をそのまま付与してリダイレクト
                     ->withInput();
         }
 
         return view('practice', ['msg' => '正しく入力されました!']);
     }*/
+
+    public function DB(Request $request)
+    {
+        $items = DB::select('select * from people');
+        return view('DB',['items' => $items]);
+    }
 
 }

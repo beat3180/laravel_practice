@@ -56,3 +56,5 @@ Route::get('/index', 'HelloController@index')->Middleware('helo');
 
 Route::get('/practice', 'HelloController@practice');
 Route::post('/practice', 'HelloController@post');
+
+Route::get('/db', 'HelloController@DB');
