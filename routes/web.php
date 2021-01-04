@@ -58,3 +58,10 @@ Route::get('/practice', 'HelloController@practice');
 Route::post('/practice', 'HelloController@post');
 
 Route::get('/db', 'HelloController@DB');
+Route::post('/db', 'HelloController@DB_post');
+
+Route::get('/add', 'HelloController@add');
+Route::post('/add', 'HelloController@create');
+
+Route::get('/edit', 'HelloController@edit');
+Route::post('/edit', 'HelloController@update');

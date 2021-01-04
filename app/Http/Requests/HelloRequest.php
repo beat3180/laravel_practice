@@ -17,7 +17,7 @@ class HelloRequest extends FormRequest
     public function authorize()
     {
         //パスでフォームリクエストの利用を判断する。パスが一致すればフォームリクエストを使える
-        if($this->path() == 'practice')
+        if($this->path() == 'practice' || 'add' || 'eidt')
         {
             return true;
         } else {
@@ -36,9 +36,10 @@ class HelloRequest extends FormRequest
         return [
             'name' => 'required',
             'mail' => 'email',
+            'age' => 'numeric|between:0,150',
             //'age' => 'numeric|hello',  作成したhelloルールを使用する
             //newを使ってMyruleクラスを使用する
-            'age' => ['numeric', new Myrule(5)],
+            //'age' => ['numeric', new Myrule(5)],
         ];
     }
 
@@ -49,7 +50,9 @@ class HelloRequest extends FormRequest
             'name.required' => '名前は必ず入力してください',
             'mail.email' => 'メールアドレスが必要です',
             'age.numeric' => '年齢を整数で記入ください',
-            'age.hello' => 'Hello! 入力は偶数のみ受け付けます。',
+            'age.beetween:0,150' => '0~150の数字を入力してください',
+            //'age.hello' => 'Hello! 入力は偶数のみ受け付けます。',
         ];
     }
+
 }
