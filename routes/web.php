@@ -65,3 +65,10 @@ Route::post('/add', 'HelloController@create');
 
 Route::get('/edit', 'HelloController@edit');
 Route::post('/edit', 'HelloController@update');
+
+Route::get('/del', 'HelloController@del');
+Route::post('/del', 'HelloController@remove');
+
+Route::get('/show', 'HelloController@show');
+
+Route::get('/practice/index', 'PracticeController@index');

@@ -16,7 +16,7 @@
   <form action="{{ url('/edit')}}" method="post">
     <table>
      {{ csrf_field() }}
-     <input type="hidden" name="id" value="{{old('id')}}">
+     <input type="hidden" name="id" value="{{($form->id)}}">
       @error('name')
         <tr><th>ERROR</th><td>{{$message}}</td></tr>
       @enderror
