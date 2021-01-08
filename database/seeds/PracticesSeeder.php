@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PracticeSeeder extends Seeder
+class PracticesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,20 +17,20 @@ class PracticeSeeder extends Seeder
             'mail' => 'taro@yamada.jp',
             'age' => '12',
         ];
-        DB::table('practice')->insert($param);
+        DB::table('practices')->insert($param);
 
         $param = [
             'name' => 'hanako',
             'mail' => 'hanako@flower.jp',
             'age' => '34',
         ];
-        DB::table('practice')->insert($param);
+        DB::table('practices')->insert($param);
 
         $param = [
             'name' => 'sachiko',
             'mail' => 'sachiko@happy.jp',
             'age' => '56',
         ];
-        DB::table('practice')->insert($param);
+        DB::table('practices')->insert($param);
     }
 }

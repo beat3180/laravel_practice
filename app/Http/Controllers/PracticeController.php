@@ -35,6 +35,49 @@ class PracticeController extends Controller
         return view('practice.find',$param);
     }
 
+     public function add(Request $request)
+    {
+
+        return view('practice.add');
+    }
+
+    public function create(Request $request)
+    {
+        //モデルにあるバリデータを呼び出す
+        $this->validate($request, Practice::$rules);
+        //インスタンスの作成
+        $practice = new Practice;
+        //保存する値を取得
+        $form = $request->all();
+        //CSRF対策のトークンだけ削除
+        unset($form['_token']);
+        //インスタンスに値を設定して保存
+        $practice->fill($form)->save();
+        return redirect('/practice/index');
+    }
+
+     public function edit(Request $request)
+    {
+        $practice = Practice::find($request->id);
+        return view('practice.edit',['form' => $practice]);
+    }
+
+    public function update(Request $request)
+    {
+        //モデルにあるバリデータを呼び出す
+        $this->validate($request, Practice::$rules);
+        //idを取得してインスタンスを作成する
+        $practice = Practice::find($request->id);
+        //保存する値を取得
+        $form = $request->all();
+        //CSRF対策のトークンだけ削除
+        unset($form['_token']);
+        //インスタンスに値を設定して保存
+        $practice->fill($form)->save();
+        return redirect('/practice/index');
+    }
+
+
 
 
 }

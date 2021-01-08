@@ -76,3 +76,14 @@ Route::get('/practice/index', 'PracticeController@index');
 
 Route::get('/practice/find', 'PracticeController@find');
 Route::post('/practice/find', 'PracticeController@search');
+
+Route::get('/practice/add', 'PracticeController@add');
+Route::post('/practice/add', 'PracticeController@create');
+
+Route::get('/practice/edit', 'PracticeController@edit');
+Route::post('/practice/edit', 'PracticeController@update');
+
+Route::get('/board/index', 'BoardController@index');
+
+Route::get('/board/add', 'BoardController@add');
+Route::post('/board/add', 'BoardController@create');

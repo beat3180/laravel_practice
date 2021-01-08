@@ -57,4 +57,13 @@ class Practice extends Model
 
     }
 
+    //リレーション
+    public function boards()
+    {
+        //hasOne結合
+        //return $this->hasOne('App\Board');
+        //hasMany結合
+        return $this->hasMany('App\Board');
+    }
+
 }

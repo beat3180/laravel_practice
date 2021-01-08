@@ -9,14 +9,39 @@
 
 @section('content')
   <p>ここが本文のコンテンツ</p>
+
 <table>
-  <tr><th>Data</th></tr>
+  <tr><th>Practice</th><th>Board</th></tr>
   @foreach($items as $item)
     <tr>
       <td>{{$item->getData()}}</td>
+      <td>
+        @if($item->boards != null)
+          <table width="100%">
+            @foreach($item->boards as $obj)
+              <tr><td>{{$obj->getData()}}</td></tr>
+            @endforeach
+          </table>
+        @endif
+      </td>
     </tr>
   @endforeach
 </table>
+
+
+{{--hasOne結合--}}
+{{--<table>
+  <tr><th>Practice</th><th>Board</th></tr>
+  @foreach($items as $item)
+    <tr>
+      <td>{{$item->getData()}}</td>
+      <td>
+        @if($item->board != null)
+          {{$item->board->getData()}}
+        @endif
+    </tr>
+  @endforeach
+</table>--}}
 
   {{--<table>
   <tr><th>Name</th><th>Age</th><th>Mail</th></tr>
