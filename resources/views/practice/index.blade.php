@@ -9,7 +9,16 @@
 
 @section('content')
   <p>ここが本文のコンテンツ</p>
-  <table>
+<table>
+  <tr><th>Data</th></tr>
+  @foreach($items as $item)
+    <tr>
+      <td>{{$item->getData()}}</td>
+    </tr>
+  @endforeach
+</table>
+
+  {{--<table>
   <tr><th>Name</th><th>Age</th><th>Mail</th></tr>
   @foreach($items as $item)
     <tr>
@@ -18,6 +27,7 @@
       <td>{{$item->mail}}</td>
     </tr>
   @endforeach
+  </table>--}}
 
 @endsection
 

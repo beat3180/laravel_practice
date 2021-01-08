@@ -72,3 +72,7 @@ Route::post('/del', 'HelloController@remove');
 Route::get('/show', 'HelloController@show');
 
 Route::get('/practice/index', 'PracticeController@index');
+
+
+Route::get('/practice/find', 'PracticeController@find');
+Route::post('/practice/find', 'PracticeController@search');
