@@ -14,8 +14,15 @@ class Board extends Model
         'message' => 'required'
     );
 
+    public function practice()
+    {
+        return $this->belongsTo('App\Practice');
+    }
+
      public function getData()
     {
-        return $this->id . ':' . $this->title;
+        return $this->id . ':' . $this->title . '(' . $this->practice->name . ')';
     }
+
+
 }

@@ -10,7 +10,39 @@
 @section('content')
   <p>ここが本文のコンテンツ</p>
 
+
 <table>
+  <tr><th>Practice</th><th>Board</th></tr>
+  @foreach($hasItems as $item)
+    <tr>
+      <td>{{$item->getData()}}</td>
+      <td>
+        @if($item->boards != null)
+          <table width="100%">
+            @foreach($item->boards as $obj)
+              <tr><td>{{$obj->getData()}}</td></tr>
+            @endforeach
+          </table>
+        @endif
+      </td>
+    </tr>
+  @endforeach
+</table>
+<div style="margin:10;"></div>
+<table>
+  <tr><th>Practice</tr></th>
+    @foreach($noItems as $item)
+      <tr>
+        <td>{{$item->getData()}}
+      </tr>
+    @endforeach
+</table>
+
+
+
+
+{{--hasmanyの結合}}
+{{--<table>
   <tr><th>Practice</th><th>Board</th></tr>
   @foreach($items as $item)
     <tr>
@@ -26,7 +58,7 @@
       </td>
     </tr>
   @endforeach
-</table>
+</table>--}}
 
 
 {{--hasOne結合--}}

@@ -10,9 +10,15 @@ class PracticeController extends Controller
 {
     public function index(Request $request)
     {
+        //practicesテーブルの全ての情報を取得する
+        /*$items = Practice::all();
+        return view('practice.index',['items' => $items]);*/
 
-        $items = Practice::all();
-        return view('practice.index',['items' => $items]);
+        //hasとdoesnthaveでboardと関連するprecticesテーブルと関連しないpracticesテーブルに分ける
+        $hasItems = Practice::has('boards')->get();
+        $noItems = Practice::doesntHave('boards')->get();
+        $param = ['hasItems' => $hasItems, 'noItems' => $noItems];
+        return view('practice.index',$param);
     }
 
     public function find(Request $request)
