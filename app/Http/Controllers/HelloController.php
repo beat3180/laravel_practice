@@ -9,6 +9,8 @@ use App\Http\Requests\HelloRequest;
 use Validator;
 //DBクラスを継承する
 use Illuminate\Support\Facades\DB;
+//Practiceモデルクラスを継承
+use App\Practice;
 
 class HelloController extends Controller
 {
@@ -120,8 +122,13 @@ class HelloController extends Controller
         /*$items = DB::select('select * from people');
         return view('DB',['items' => $items]);*/
 
-        $items = DB::table('people')->get();
-        return view('DB',['items' => $items]);
+        //$items = DB::table('practices')->simplePaginate(5);
+        //return view('DB',['items' => $items]);
+
+        $sort = $request->sort;
+        $items = Practice::orderBy($sort,'asc')->Paginate(5);
+        $param = ['items' => $items, 'sort' => $sort];
+        return view('DB',$param);
     }
 
     public function post_DB(Request $request)
@@ -198,6 +205,19 @@ class HelloController extends Controller
     public function rest(Request $request)
     {
         return view('rest');
+    }
+
+    public function ses_get(Request $request)
+    {
+        $sesdata = $request->session()->get('msg');
+        return view('session', ['session_data' => $sesdata]);
+    }
+
+     public function ses_put(Request $request)
+    {
+        $msg = $request->input;
+        $request->session()->put('msg',$msg);
+        return redirect('session');
     }
 
 }
