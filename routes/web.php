@@ -94,3 +94,7 @@ Route::get('/rest', 'HelloController@rest');
 
 Route::get('/session', 'HelloController@ses_get');
 Route::post('/session', 'HelloController@ses_put');
+
+Route::get('/vue', function () {
+    return view('vue');
+});
