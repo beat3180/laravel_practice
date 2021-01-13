@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Str; // 追加
+
 return [
 
     /*
@@ -86,9 +88,6 @@ return [
     |
     */
 
-    'prefix' => env(
-        'CACHE_PREFIX',
-        str_slug(env('APP_NAME', 'laravel'), '_').'_cache'
-    ),
+    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache'), // Strメソッドに変更
 
 ];

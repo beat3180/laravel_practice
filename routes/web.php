@@ -98,3 +98,7 @@ Route::post('/session', 'HelloController@ses_put');
 Route::get('/vue', function () {
     return view('vue');
 });
+
+
+Route::get('/todo/index','TodosController@index');
+Route::resource('todos','TodosController');
